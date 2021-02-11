@@ -37,6 +37,8 @@ func binarySearch(_ nums: [Int], _ target: Int)->Int{
         }
     }
     
+    if nums[left] == target { return left }
+    
     return -1
 }
 let data = [1,2,5,7,8,12]
