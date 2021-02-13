@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 1 Quick SOrt
+// 1 Quick Sort https://www.jiuzhang.com/problem/quick-sort/
 
 // 2 Thought 10 min
 
