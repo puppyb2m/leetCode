@@ -18,6 +18,8 @@ class Solution {
             return true
         }
         return abs(helper(root!.left) - helper(root!.right)) <= 1
+            && isBalanced(root!.left)
+            && isBalanced(root!.right)
     }
     
     private func helper(_ root: TreeNode?)->Int{
