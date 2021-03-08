@@ -21,6 +21,8 @@ import Foundation
 // 3 code
 // Bottom to Top
 class Solution {
+    
+    // base binary search
     func search(_ nums: [Int], _ target: Int) -> Int {
         var left = 0, right = nums.count - 1, mid = 0
         
@@ -47,6 +49,38 @@ class Solution {
         
         if nums[left] == target {
             return left
+        }
+        
+        return -1
+    }
+    
+    // smallest && rotated
+    func search(_ nums: [Int], _ target: Int) -> Int {
+        // find the smallest number
+        var left = 0, right = nums.count - 1, mid = 0
+        while left < right{
+            mid = left +  (right - left) / 2
+            if nums[mid] > nums[right]{
+                left = mid + 1
+            }else if nums[mid] < nums[right]{
+                right = mid
+            }
+        }
+        var roteated = left
+        
+        // binary search (find the real mid)
+        left = 0
+        right = nums.count - 1
+        while left <= right{
+            mid = (left + (right - left) / 2)
+            var realMid = (mid + roteated) % nums.count
+            if nums[realMid] == target{
+                return realMid
+            }else if nums[realMid] > target{
+                right = mid - 1
+            }else{
+                left = mid + 1
+            }
         }
         
         return -1
