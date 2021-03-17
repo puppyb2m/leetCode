@@ -86,3 +86,32 @@ class Solution {
         return -1
     }
 }
+
+class Solution {
+    func search(_ nums: [Int], _ target: Int) -> Int {
+        var left = 0, right = nums.count - 1,mid = 0
+        
+        while left + 1 < right{
+            mid = left + (right - left) / 2
+            
+            if nums[left] <= nums[mid]{
+                if nums[left] <= target && nums[mid] >= target{
+                    right = mid
+                }else{
+                    left = mid
+                }
+            }else if nums[left] >= nums[mid]{
+                if target >= nums[mid] && target <= nums[right]{
+                    left = mid
+                }else {
+                    right = mid
+                }
+            }
+        }
+        
+        if (nums[left] == target) { return left }
+        if (nums[right] == target) { return right }
+        
+        return -1
+    }
+}
